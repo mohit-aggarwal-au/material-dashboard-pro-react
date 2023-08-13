@@ -35,6 +35,7 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
 // NewUser page components
+import TestApp from "layouts/pages/users/new-user/components/TestApp";
 import UserInfo from "layouts/pages/users/new-user/components/UserInfo";
 import Address from "layouts/pages/users/new-user/components/Address";
 import Socials from "layouts/pages/users/new-user/components/Socials";
@@ -46,18 +47,20 @@ import form from "layouts/pages/users/new-user/schemas/form";
 import initialValues from "layouts/pages/users/new-user/schemas/initialValues";
 
 function getSteps() {
-  return ["User Info1", "Address", "Social", "Profile"];
+  return ["TestApp", "User Info1", "Address", "Social", "Profile"];
 }
 
 function getStepContent(stepIndex, formData) {
   switch (stepIndex) {
     case 0:
-      return <UserInfo formData={formData} />;
+      return <TestApp formData={formData} />;
     case 1:
-      return <Address formData={formData} />;
+      return <UserInfo formData={formData} />;
     case 2:
-      return <Socials formData={formData} />;
+      return <Address formData={formData} />;
     case 3:
+      return <Socials formData={formData} />;
+    case 4:
       return <Profile formData={formData} />;
     default:
       return null;
