@@ -1,68 +1,87 @@
 import React, { useState } from "react";
 
-const questions = [
+const questionsData = [
   {
+    id: 1,
     question: "What is the capital of France?",
-    options: ["Berlin", "London", "Paris", "Rome"],
+    options: ["Paris", "London", "Berlin", "Madrid"],
     correctAnswer: "Paris",
   },
   {
-    question: "What is the largest planet in our solar system?",
-    options: ["Mars", "Venus", "Jupiter", "Mercury"],
-    correctAnswer: "Jupiter",
+    id: 2,
+    question: "Which planet is known as the Red Planet?",
+    options: ["Mars", "Jupiter", "Venus", "Saturn"],
+    correctAnswer: "Mars",
   },
   // Add more questions here
 ];
 
 const TestApp = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [score, setScore] = useState(0);
 
-  const handleOptionSelect = (selectedOption) => {
-    setUserAnswers([...userAnswers, selectedOption]);
-    // Move to the next question
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
   };
 
-  const calculateScore = () => {
-    let score = 0;
-    userAnswers.forEach((answer, index) => {
-      if (answer === questions[index].correctAnswer) {
-        score++;
-      }
-    });
-    return score;
-  };
-
-  const renderQuestion = () => {
-    if (currentQuestionIndex >= questions.length) {
-      return (
-        <div>
-          <h2>Test Completed!</h2>
-          <p>Your Score: {calculateScore()}</p>
-        </div>
-      );
+  const handleNextQuestion = () => {
+    const currentQuestion = questionsData[currentQuestionIndex];
+    if (selectedOption === currentQuestion.correctAnswer) {
+      setScore(score + 1);
     }
 
-    const currentQuestion = questions[currentQuestionIndex];
+    setSelectedOption("");
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const handlePreviousQuestion = () => {
+    setSelectedOption("");
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
+
+  const renderOptions = (options) => {
+    return options.map((option, index) => (
+      <div
+        key={index}
+        className={`option ${selectedOption === option ? "selected" : ""}`}
+        onClick={() => handleOptionSelect(option)}
+      >
+        {option}
+      </div>
+    ));
+  };
+
+  const renderCurrentQuestion = () => {
+    const currentQuestion = questionsData[currentQuestionIndex];
     return (
-      <div>
-        <h2>{currentQuestion.question}</h2>
-        <ul>
-          {currentQuestion.options.map((option, index) => (
-            <li key={index}>
-              <button onClick={() => handleOptionSelect(option)}>{option}</button>
-            </li>
-          ))}
-        </ul>
+      <div className="question-container">
+        <h2>Question {currentQuestionIndex + 1}</h2>
+        <p>{currentQuestion.question}</p>
+        <div className="options-container">{renderOptions(currentQuestion.options)}</div>
+        <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+          Back
+        </button>
+        <button onClick={handleNextQuestion} disabled={!selectedOption}>
+          Next
+        </button>
       </div>
     );
   };
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Online Practice Test</h1>
-      {renderQuestion()}
+      {currentQuestionIndex < questionsData.length ? (
+        renderCurrentQuestion()
+      ) : (
+        <div className="result-container">
+          <h2>Test Completed</h2>
+          <p>
+            Your Score: {score} / {questionsData.length}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
