@@ -156,7 +156,7 @@ const routes = [
             name: "Practise Test",
             key: "practise-test",
             route: "/pages/practise/test",
-            component: <NewUser />,
+            component: <TestForm />,
           },
         ],
       },

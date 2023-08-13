@@ -36,18 +36,18 @@ import Footer from "examples/Footer";
 
 // NewUser page components
 import TestApp from "layouts/pages/practise/test/components/TestApp";
-import UserInfo from "layouts/pages/users/new-user/components/UserInfo";
-import Address from "layouts/pages/users/new-user/components/Address";
-import Socials from "layouts/pages/users/new-user/components/Socials";
-import Profile from "layouts/pages/users/new-user/components/Profile";
+import UserInfo from "layouts/pages/practise/test/components/UserInfo";
+import Address from "layouts/pages/practise/test/components/Address";
+import Socials from "layouts/pages/practise/test/components/Socials";
+import Profile from "layouts/pages/practise/test/components/Profile";
 
 // NewUser layout schemas for form and form feilds
-import validations from "layouts/pages/users/new-user/schemas/validations";
-import form from "layouts/pages/users/new-user/schemas/form";
-import initialValues from "layouts/pages/users/new-user/schemas/initialValues";
+import validations from "layouts/pages/practise/test/schemas/validations";
+import form from "layouts/pages/practise/test/schemas/form";
+import initialValues from "layouts/pages/practise/test/schemas/initialValues";
 
 function getSteps() {
-  return ["TestApp", "User Info1", "Address", "Social", "Profile"];
+  return ["TestApp", "User Info2", "Address", "Social", "Profile"];
 }
 
 function getStepContent(stepIndex, formData) {

@@ -46,7 +46,7 @@ import form from "layouts/pages/users/new-user/schemas/form";
 import initialValues from "layouts/pages/users/new-user/schemas/initialValues";
 
 function getSteps() {
-  return ["User Info1", "Address", "Social", "Profile"];
+  return ["User Info4", "Address", "Social", "Profile"];
 }
 
 function getStepContent(stepIndex, formData) {
