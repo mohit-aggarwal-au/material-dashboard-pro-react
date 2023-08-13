@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MDButton from "components/MDButton";
 
 const questionsData = [
   {
@@ -59,12 +60,12 @@ const TestApp = () => {
         <h2>Question {currentQuestionIndex + 1}</h2>
         <p>{currentQuestion.question}</p>
         <div className="options-container">{renderOptions(currentQuestion.options)}</div>
-        <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+        <MDButton onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
           Back
-        </button>
-        <button onClick={handleNextQuestion} disabled={!selectedOption}>
+        </MDButton>
+        <MDButton onClick={handleNextQuestion} disabled={!selectedOption}>
           Next
-        </button>
+        </MDButton>
       </div>
     );
   };

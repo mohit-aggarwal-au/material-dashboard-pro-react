@@ -41,6 +41,7 @@ import Sales from "layouts/dashboards/sales";
 import ProfileOverview from "layouts/pages/profile/profile-overview";
 import AllProjects from "layouts/pages/profile/all-projects";
 import NewUser from "layouts/pages/users/new-user";
+import TestForm from "layouts/pages/practise/test";
 import Settings from "layouts/pages/account/settings";
 import Billing from "layouts/pages/account/billing";
 import Invoice from "layouts/pages/account/invoice";
@@ -144,6 +145,18 @@ const routes = [
             key: "all-projects",
             route: "/pages/profile/all-projects",
             component: <AllProjects />,
+          },
+        ],
+      },
+      {
+        name: "PractiseTest",
+        key: "practisetest",
+        collapse: [
+          {
+            name: "Practise Test",
+            key: "practise-test",
+            route: "/pages/practise/test",
+            component: <NewUser />,
           },
         ],
       },
