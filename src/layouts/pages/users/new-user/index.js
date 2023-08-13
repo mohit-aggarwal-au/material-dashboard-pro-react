@@ -35,7 +35,6 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 
 // NewUser page components
-import TestApp from "layouts/pages/users/new-user/components/TestApp";
 import UserInfo from "layouts/pages/users/new-user/components/UserInfo";
 import Address from "layouts/pages/users/new-user/components/Address";
 import Socials from "layouts/pages/users/new-user/components/Socials";
