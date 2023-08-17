@@ -36,7 +36,6 @@ import Footer from "examples/Footer";
 
 // NewUser page components
 import TestApp2 from "layouts/pages/practise/test/components/TestApp2";
-import ErrorRadios from "layouts/pages/practise/test/components/ErrorRadios";
 import UserInfo from "layouts/pages/practise/test/components/UserInfo";
 import Address from "layouts/pages/practise/test/components/Address";
 import Socials from "layouts/pages/practise/test/components/Socials";
@@ -48,13 +47,13 @@ import form from "layouts/pages/practise/test/schemas/form";
 import initialValues from "layouts/pages/practise/test/schemas/initialValues";
 
 function getSteps() {
-  return ["ErrorRadios", "User Info2", "Address", "Social", "Profile"];
+  return ["TestApp2", "User Info2", "Address", "Social", "Profile"];
 }
 
 function getStepContent(stepIndex, formData) {
   switch (stepIndex) {
     case 0:
-      return <ErrorRadios formData={formData} />;
+      return <TestApp2 formData={formData} />;
     case 1:
       return <UserInfo formData={formData} />;
     case 2:

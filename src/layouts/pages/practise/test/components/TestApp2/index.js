@@ -1,22 +1,31 @@
 import React, { useState } from "react";
-
+// const data = require("./questions.json");
+// const questionsData = "";
+// try {
+//   questionsData = JSON.parse(data);
+//   console.log("JSON Array:", jsonArray);
+// } catch (parseError) {
+//   console.error("Error parsing JSON:", parseError);
+// }
 const questionsData = [
   {
     id: 1,
     question: "What is the capital of France?",
     options: ["Paris", "London", "Berlin", "Madrid"],
     correctAnswer: "Paris",
+    answerExplanantion: "Paris is the captial of France. It was created in 1983",
   },
   {
     id: 2,
     question: "Which planet is known as the Red Planet?",
     options: ["Mars", "Jupiter", "Venus", "Saturn"],
     correctAnswer: "Mars",
+    answerExplanantion: "Mars is the first planet in the solar system",
   },
   // Add more questions here
 ];
 
-const TestApp2 = () => {
+const TestApp = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
@@ -33,6 +42,10 @@ const TestApp2 = () => {
     }
 
     setShowAnswer(true);
+  };
+
+  const handleHideAnswer = () => {
+    setShowAnswer(false);
   };
 
   const handleNextQuestion = () => {
@@ -72,17 +85,26 @@ const TestApp2 = () => {
         <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
           Back
         </button>
+        <button
+          onClick={handleNextQuestion}
+          disabled={currentQuestionIndex === questionsData.length - 1}
+        >
+          Next
+        </button>
         {showAnswer ? (
-          <button
-            onClick={handleNextQuestion}
-            disabled={currentQuestionIndex === questionsData.length - 1}
-          >
-            Next
-          </button>
+          <>
+            <p>{currentQuestion.correctAnswer}</p>
+            <p>{currentQuestion.answerExplanantion}</p>
+            <button onClick={handleHideAnswer} disabled={!selectedOption}>
+              Hide Answer
+            </button>
+          </>
         ) : (
-          <button onClick={handleCheckAnswer} disabled={!selectedOption}>
-            Check Answer
-          </button>
+          <>
+            <button onClick={handleCheckAnswer} disabled={!selectedOption}>
+              Check Answer
+            </button>
+          </>
         )}
       </div>
     );
@@ -105,4 +127,4 @@ const TestApp2 = () => {
   );
 };
 
-export default TestApp2;
+export default TestApp;
