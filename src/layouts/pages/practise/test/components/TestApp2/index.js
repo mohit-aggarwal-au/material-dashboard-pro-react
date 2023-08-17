@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import MDButton from "components/MDButton";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 const data = require("./questions.json");
 let questionsData = "";
@@ -47,16 +50,24 @@ const TestApp = () => {
 
   const renderOptions = (options) => {
     return options.map((option, index) => (
-      <label key={index} className="option">
-        <input
-          type="radio"
+      <>
+        <RadioGroup
+          aria-labelledby="demo-error-radios"
+          name="quiz"
           value={option}
-          checked={selectedOption === option}
           onChange={() => handleOptionSelect(option)}
-          disabled={showAnswer}
-        />
-        {option}
-      </label>
+        ></RadioGroup>
+        <label key={index} className="option">
+          <input
+            type="radio"
+            value={option}
+            checked={selectedOption === option}
+            onChange={() => handleOptionSelect(option)}
+            disabled={showAnswer}
+          />
+          {option}
+        </label>
+      </>
     ));
   };
 
