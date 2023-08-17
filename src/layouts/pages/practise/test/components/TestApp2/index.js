@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import MDButton from "components/MDButton";
+
 const data = require("./questions.json");
 let questionsData = "";
 try {
@@ -7,23 +9,6 @@ try {
 } catch (parseError) {
   console.error("Error parsing JSON:", parseError);
 }
-// const questionsData = [
-//   {
-//     id: 1,
-//     question: "What is the capital of France?",
-//     options: ["Paris", "London", "Berlin", "Madrid"],
-//     correctAnswer: "Paris",
-//     answerExplanantion: "Paris is the captial of France. It was created in 1983",
-//   },
-//   {
-//     id: 2,
-//     question: "Which planet is known as the Red Planet?",
-//     options: ["Mars", "Jupiter", "Venus", "Saturn"],
-//     correctAnswer: "Mars",
-//     answerExplanantion: "Mars is the first planet in the solar system",
-//   },
-//   // Add more questions here
-// ];
 
 const TestApp = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -82,28 +67,49 @@ const TestApp = () => {
         <h2>Question {currentQuestionIndex + 1}</h2>
         <p>{currentQuestion.question}</p>
         <div className="options-container">{renderOptions(currentQuestion.options)}</div>
-        <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>
+        <MDButton
+          onClick={handlePreviousQuestion}
+          disabled={currentQuestionIndex === 0}
+          type="submit"
+          variant="gradient"
+          color="dark"
+        >
           Back
-        </button>
-        <button
+        </MDButton>
+        <MDButton
           onClick={handleNextQuestion}
           disabled={currentQuestionIndex === questionsData.length - 1}
+          type="submit"
+          variant="gradient"
+          color="dark"
         >
           Next
-        </button>
+        </MDButton>
         {showAnswer ? (
           <>
             <p>{currentQuestion.correctAnswer}</p>
             <p>{currentQuestion.answerExplanantion}</p>
-            <button onClick={handleHideAnswer} disabled={!selectedOption}>
+            <MDButton
+              onClick={handleNextQuestion}
+              disabled={currentQuestionIndex === questionsData.length - 1}
+              type="submit"
+              variant="gradient"
+              color="dark"
+            >
               Hide Answer
-            </button>
+            </MDButton>
           </>
         ) : (
           <>
-            <button onClick={handleCheckAnswer} disabled={!selectedOption}>
+            <MDButton
+              onClick={handleCheckAnswer}
+              disabled={!selectedOption}
+              type="submit"
+              variant="gradient"
+              color="dark"
+            >
               Check Answer
-            </button>
+            </MDButton>
           </>
         )}
       </div>
