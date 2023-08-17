@@ -11,4 +11,11 @@
     "options": ["Mars", "Jupiter", "Venus", "Saturn"],
     "correctAnswer": "Mars",
     "answerExplanantion": "Mars is the first planet in the solar system"
+  },
+  {
+    "id": 3,
+    "question": "What color is water?",
+    "options": ["Blue", "Yellow", "Purple", "White"],
+    "correctAnswer": "Blue",
+    "answerExplanantion": "Water is always blue"
   }]

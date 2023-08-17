@@ -1,29 +1,29 @@
 import React, { useState } from "react";
-// const data = require("./questions.json");
-// const questionsData = "";
-// try {
-//   questionsData = JSON.parse(data);
-//   console.log("JSON Array:", jsonArray);
-// } catch (parseError) {
-//   console.error("Error parsing JSON:", parseError);
-// }
-const questionsData = [
-  {
-    id: 1,
-    question: "What is the capital of France?",
-    options: ["Paris", "London", "Berlin", "Madrid"],
-    correctAnswer: "Paris",
-    answerExplanantion: "Paris is the captial of France. It was created in 1983",
-  },
-  {
-    id: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Mars", "Jupiter", "Venus", "Saturn"],
-    correctAnswer: "Mars",
-    answerExplanantion: "Mars is the first planet in the solar system",
-  },
-  // Add more questions here
-];
+const data = require("./questions.json");
+let questionsData = "";
+try {
+  questionsData = JSON.parse(JSON.stringify(data));
+  console.log("JSON Array:", questionsData);
+} catch (parseError) {
+  console.error("Error parsing JSON:", parseError);
+}
+// const questionsData = [
+//   {
+//     id: 1,
+//     question: "What is the capital of France?",
+//     options: ["Paris", "London", "Berlin", "Madrid"],
+//     correctAnswer: "Paris",
+//     answerExplanantion: "Paris is the captial of France. It was created in 1983",
+//   },
+//   {
+//     id: 2,
+//     question: "Which planet is known as the Red Planet?",
+//     options: ["Mars", "Jupiter", "Venus", "Saturn"],
+//     correctAnswer: "Mars",
+//     answerExplanantion: "Mars is the first planet in the solar system",
+//   },
+//   // Add more questions here
+// ];
 
 const TestApp = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
